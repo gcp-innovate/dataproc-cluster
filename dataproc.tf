@@ -53,7 +53,7 @@ resource "google_dataproc_cluster" "dp_cluster" {
     }
 
     gce_cluster_config {
-      network = var.network
+      #network = var.network
       subnetwork = var.subnetwork
       internal_ip_only = true
       service_account = var.service_account
