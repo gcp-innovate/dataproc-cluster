@@ -36,13 +36,7 @@ resource "google_dataproc_cluster" "dp_cluster" {
       script = var.pip_initialization_script
       timeout_sec = var.initialization_timeout_sec
     }
-*/
-    initialization_action {
-      script      = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"
-      timeout_sec = 500
-    }
     
-
     dynamic "initialization_action" {
       for_each = [for script in var.initialization_script: {
         script = script
@@ -52,6 +46,14 @@ resource "google_dataproc_cluster" "dp_cluster" {
         timeout_sec = var.initialization_timeout_sec
       }
     }
+*/
+    initialization_action {
+      script      = "gs://dataproc-initialization-actions/stackdriver/stackdriver.sh"
+      timeout_sec = 500
+    }
+    
+
+
 
     gce_cluster_config {
       #network = var.network
